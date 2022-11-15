@@ -1,72 +1,34 @@
+import os
 from flask import Flask,render_template,request,redirect
-import smtplib
+import telebot
 
-app=Flask(__name__)
 
-#route() decorators
-@app.route('/')
-def home():
-    return render_template('index.html')
 
-@app.route('/index.html')
-def index():
-    return render_template('index.html')
+TOKEN = '2109918986:AAErVJ9F_cne-cujIGG6VOZjw5GMNwr7UUA'
+bot = telebot.TeleBot(TOKEN)
+#app=Flask(__name__)
+server = Flask(__name__)
 
-@app.route('/About.html')
-def about():
-    return render_template('About.html')
 
-@app.route('/Menu.html')
-def menu():
-    return render_template('Menu.html')
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.reply_to(message, 'Hello, ' + message.from_user.first_name)
 
-@app.route('/Contact.html')
-def contact():
-    return render_template('Contact.html')
+@server.route('/' + TOKEN, methods=['POST'])
+def getMessage():
+    bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
+    return "!", 200
+ 
+@server.route("/")
+def webhook():
+    bot.remove_webhook()
+    bot.set_webhook(url='https://deshiapp.herokuapp.com/' + f"{TOKEN}")
+    return "!", 200
+ 
+if __name__ == "__main__":
+  #threading.Thread(target=runAutoList, name='run_server_time', daemon=True).start()
+  server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
+ 
 
-@app.route('/Mail.html')
-def mail():
-    return render_template('Mail.html')
-
-@app.route('/send_email/',methods=['POST'])
-def send():
-    #Getting form data from the web form
-    name=request.form['name']
-    email=request.form['email']
-    subject=request.form['subject']
-    message=request.form['message']
-
-    #Open and read a text file with gmail username and assigning the value to a gmail_sender variable
-    with open('username.txt','r') as f:
-        gmail_sender = f.read()
-    f.close()
-    #Open and read a text file with gmail password and assigning the value to a gmail_passwd variable
-    with open('password.txt','r') as f:
-        gmail_passwd = f.read()
-    f.close()
-
-    #sending email using smtplib
-    TO = gmail_sender
-    SUBJECT = subject
-    TEXT = 'This is message from %s\n\n' % email +message+'\n\n'+name
-
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.ehlo()
-    server.starttls()
-    server.login(gmail_sender, gmail_passwd)
-
-    BODY = '\r\n'.join(['To: %s' % TO,
-                        'From: %s' % gmail_sender,
-                        'Subject: %s' % SUBJECT,
-                        '', TEXT])
-    try:
-        server.sendmail(gmail_sender, [TO], BODY)
-    except:
-        print('error sending mail')
-    
-    server.quit()
-    #Notification of email sending
-    return redirect('/Mail.html')
-
-if __name__=='__main__':
-    app.run(debug=True)
+#if __name__=='__main__':
+    #app.run(debug=True)
