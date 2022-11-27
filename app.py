@@ -23,7 +23,7 @@ def getMessage():
 def webhook():
     bot.remove_webhook()
     #bot.set_webhook(url='https://deshiapp.herokuapp.com/' + f"{TOKEN}")
-    bot.set_webhook(url='https://deshi-app.koyeb.com/' + f"{TOKEN}")
+    bot.set_webhook(url='https://deshi-app-meenaakhlesh786.koyeb.com/' + f"{TOKEN}")
     #bot.set_webhook(url='https://heroku-sample.onrender.com/' + f"{TOKEN}")
     return "!", 200
  
