@@ -17,7 +17,7 @@ def start(message):
 
 def akhil():
   while True:
-    bot.send_message(chat_id="")
+    bot.send_message(chat_id="685472615",text="running🌜")
     print("akhil")
     print("kyu")
     time.sleep(10)
