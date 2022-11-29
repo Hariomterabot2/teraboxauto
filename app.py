@@ -1,7 +1,15 @@
 import os
 from flask import Flask,render_template,request,redirect
+import time
 
 server = Flask(__name__)
+
+while True:
+  print("akhil")
+  print("kyu")
+  time.sleep(10)
+
+
 
 @server.route('/')
 def getMessage():
