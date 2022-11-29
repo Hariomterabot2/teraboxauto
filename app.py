@@ -34,7 +34,7 @@ def webhook():
     return "!", 200
 
 @server.route('/home')
-def getMessage():
+def GetMuessageyu():
   return("running")
 
 if __name__ == "__main__":
