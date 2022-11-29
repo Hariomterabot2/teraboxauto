@@ -37,8 +37,8 @@ def webhook():
 def GetMuessageyu():
   return("running")
 
+threading.Thread(target=akhil, name='run_server_time', daemon=True).start()
 if __name__ == "__main__":
-  threading.Thread(target=akhil, name='run_server_time', daemon=True).start()
   #server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
   #server.run(debug=True,host="0.0.0.0", port=int(os.environ.get('PORT', 8080)))
   server.run(debug=True,host="0.0.0.0", port=int(os.environ.get('PORT', 1000)))
