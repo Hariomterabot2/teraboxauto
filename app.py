@@ -5,7 +5,7 @@ import threading
 
 server = Flask(__name__)
 
-def akhil:
+def akhil():
   while True:
     print("akhil")
     print("kyu")
