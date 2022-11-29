@@ -16,10 +16,10 @@ def start(message):
   bot.reply_to(message, 'Hello, ' + message.from_user.first_name)
 
 def akhil():
+  a=0
   while True:
-    bot.send_message(chat_id="685472615",text="running🌜")
-    print("akhil")
-    print("kyu")
+    a+=1
+    bot.send_message(chat_id="685472615",text=f"{a}. running🌜")
     time.sleep(10)
 
 @server.route('/' + TOKEN, methods=['POST'])
@@ -38,6 +38,7 @@ def GetMuessageyu():
   return("running")
 
 threading.Thread(target=akhil, name='run_server_time', daemon=True).start()
+
 if __name__ == "__main__":
   #server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
   #server.run(debug=True,host="0.0.0.0", port=int(os.environ.get('PORT', 8080)))
