@@ -42,5 +42,5 @@ threading.Thread(target=akhil1, name='run_server_time', daemon=True).start()
 if __name__ == "__main__":
   #server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
   #server.run(debug=True,host="0.0.0.0", port=int(os.environ.get('PORT', 8080)))
-  server.run(debug=True,host="0.0.0.0", port=int(os.environ.get('PORT', 1000)))
+  server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 1000)))
 
