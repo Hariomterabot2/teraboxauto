@@ -3,6 +3,7 @@ from flask import Flask,render_template,request,redirect
 import time
 import threading
 import telebot
+import requests
 
 
 TOKEN = '5072766021:AAHN57wjgpEG1c6OSqoMeYXbRBdbeGgElYs'
@@ -19,6 +20,7 @@ def akhil1():
   a=0
   while True:
     a+=1
+    x = requests.get('https://alivebots.onrender.com')
     bot.send_message(chat_id="685472615",text=f"{a}. running🌜")
     time.sleep(10)
 
@@ -37,9 +39,9 @@ def webhook():
 def GetMuessageyu():
   return("running")
 
-threading.Thread(target=akhil1, name='run_server_time', daemon=True).start()
 
 if __name__ == "__main__":
+  threading.Thread(target=akhil1, name='run_server_time', daemon=True).start()
   #server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
   #server.run(debug=True,host="0.0.0.0", port=int(os.environ.get('PORT', 8080)))
   server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 1000)))
