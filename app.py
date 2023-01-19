@@ -91,7 +91,7 @@ def command_default(m):
       except Exception as e:
         bot.send_message(m.chat.id,f"rr {e}")
         pass
-    bot.reply_to(m.chat.id,"Done❤️")
+    bot.reply_to(m,"Done❤️")
     time.sleep(2)
   except Exception as e:
     Xxx = sys.exc_info()
