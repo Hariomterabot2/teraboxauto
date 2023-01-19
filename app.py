@@ -82,19 +82,15 @@ def command_default(m):
   FData = PostText.format(OcaptionTitle,TeraUrl,TeraUrl,GENERALCHANNEL)
   msgy = bot.send_photo(chat_id=int(POSTCHANNEL),photo=photo_id,caption=FData,reply_markup=keyboard,parse_mode="html")
   try:
-    bot.send_message(m,"1")
     UpdateTotalPost(msgy.id)
-    bot.send_message(m,"2")
     ChnlList = GetAllChannel()
-    bot.send_message(m,"3")
     for v in ChnlList:
       try:
         bot.send_photo(chat_id=int(POSTCHANNEL),photo=photo_id,caption=FData,reply_markup=keyboard,parse_mode="html")
       except Exception as e:
-        bot.send_message(m,f"rr {e}")
+        bot.send_message(m.chat.id,f"rr {e}")
         pass
-    bot.reply_to(m,"Done❤️")
-    bot.send_message(m,"4")
+    bot.reply_to(m.chat.id,"Done❤️")
     time.sleep(2)
   except Exception as e:
     Xxx = sys.exc_info()
