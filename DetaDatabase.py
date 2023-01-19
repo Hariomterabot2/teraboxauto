@@ -52,5 +52,5 @@ def UpdateAdTextMsgId(ID):
     print("123")
 
 def GetPostChannelId():
-    Id = "-100" + str(general.update("B1",msgid))
+    Id = "-100" + str(general.get("B2").first())
     return int(Id)
