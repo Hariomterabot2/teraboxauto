@@ -91,7 +91,8 @@ def command_default(m):
     bot.reply_to(m,"Done❤️")
     time.sleep(2)
   except Exception as e:
-    bot.send_message(m.chat.id,e)
+    Xxx = traceback.format_exc()
+    bot.send_message(m.chat.id,Xxx)
   
   
 @bot.channel_post_handler()
