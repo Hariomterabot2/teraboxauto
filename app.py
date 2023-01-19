@@ -8,9 +8,9 @@ import random
 
 from flask import Flask,render_template,request,redirect
 
-from config import POSTCHANNEL,GENERALCHANNEL,PostText,AdText
+from config import GENERALCHANNEL,PostText,AdText
 
-from DetaDatabase import AddChannel,GetAllChannel,CheckAuthUser,UpdateTotalPost,GetLastPostId,UpdateAdTextMsgId
+from DetaDatabase import AddChannel,GetAllChannel,CheckAuthUser,UpdateTotalPost,GetLastPostId,UpdateAdTextMsgId,GetPostChannelId
 logger = telebot.logger
 telebot.logger.setLevel(logging.DEBUG) 
 
@@ -24,6 +24,8 @@ ValidDomain = [
   "nephobox.com",
   "momerybox.com"
   ]
+  
+POSTCHANNEL = GetPostChannelId()
 
 # Handle '/start' and '/help'
 @bot.message_handler(commands=['start'])
