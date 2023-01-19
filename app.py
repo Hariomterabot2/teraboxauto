@@ -65,7 +65,7 @@ def command_default(m):
     match = re.findall(r'(https?://[^\s]+)', f"{m.caption}")
     for url in match:
       data = url.split("/")[2]
-      if (str(data) in ValidDomain:
+      if (str(data) is in ValidDomain:
       #if (str(data) == "terabox.com" or str(data) == "nephobox.com"):
         TeraUrl+=url
         break
