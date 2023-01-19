@@ -39,7 +39,7 @@ def AddChannel(ChnlId):
     
 def GetAllChannel():
     values_list = channels.col_values(2)
-    print(values_list)
+    return values_list
     
 def UpdateTotalPost(msgid):
     general.update("B1",msgid)
