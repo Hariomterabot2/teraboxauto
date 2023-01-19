@@ -20,8 +20,9 @@ bot = telebot.TeleBot(API_TOKEN)
 server = Flask(__name__)
 
 ValidDomain = [
-  "",
-  ""
+  "terabox.com",
+  "nephobox.com",
+  "momerybox.com"
   ]
 
 # Handle '/start' and '/help'
@@ -65,7 +66,7 @@ def command_default(m):
     for url in match:
       data = url.split("/")[2]
       if (str(data) in ValidDomain:
-      if (str(data) == "terabox.com" or str(data) == "nephobox.com"):
+      #if (str(data) == "terabox.com" or str(data) == "nephobox.com"):
         TeraUrl+=url
         break
       else:
