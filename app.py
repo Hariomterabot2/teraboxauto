@@ -15,7 +15,7 @@ logger = telebot.logger
 telebot.logger.setLevel(logging.DEBUG) 
 
 
-API_TOKEN = '5812217389:AAE2b537yf7H5YNRRCFXeoa8u1FQLbGJgpw'
+API_TOKEN = '5812217389:AAF6IFWOR-bSk9JWxzMDgb2O3lpI8xPZYGc'
 bot = telebot.TeleBot(API_TOKEN)
 server = Flask(__name__)
  
@@ -110,5 +110,5 @@ def webhook():
     return "!", 200
  
 #if __name__ == "__main__":
-    server.run(debug=True,host="0.0.0.0", port=int(os.environ.get('PORT', 1000)))
+    server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 1000)))
 #bot.infinity_polling() 
