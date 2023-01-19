@@ -109,6 +109,6 @@ def webhook():
     bot.set_webhook(url='https://alivebots.onrender.com/' + f"{API_TOKEN}")
     return "!", 200
  
-#if __name__ == "__main__":
+if __name__ == "__main__":
     server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 1000)))
 #bot.infinity_polling() 
