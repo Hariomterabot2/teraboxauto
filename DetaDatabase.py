@@ -47,3 +47,6 @@ def UpdateTotalPost(msgid):
 def GetLastPostId():
     h = general.get('B1').first()
     return h
+    
+def UpdateAdTextMsgId(ID):
+    print("123")
