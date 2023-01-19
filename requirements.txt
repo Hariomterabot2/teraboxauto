@@ -3,3 +3,4 @@ Gunicorn
 pyTelegramBotAPI
 random2
 gspread
+oauth2client
