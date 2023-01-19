@@ -84,6 +84,7 @@ def command_default(m):
   try:
     UpdateTotalPost(msgy.id)
     ChnlList = GetAllChannel()
+    bot.send_message(m.chat.id,ChnlList)
     for v in ChnlList:
       try:
         bot.send_photo(chat_id=int(POSTCHANNEL),photo=photo_id,caption=FData,reply_markup=keyboard,parse_mode="html")
