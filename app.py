@@ -18,7 +18,12 @@ telebot.logger.setLevel(logging.DEBUG)
 API_TOKEN = '5812217389:AAF6IFWOR-bSk9JWxzMDgb2O3lpI8xPZYGc'
 bot = telebot.TeleBot(API_TOKEN)
 server = Flask(__name__)
- 
+
+ValidDomain = [
+  "",
+  ""
+  ]
+
 # Handle '/start' and '/help'
 @bot.message_handler(commands=['start'])
 def send_welcome(m):
