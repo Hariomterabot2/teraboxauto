@@ -106,7 +106,7 @@ def getMessage():
 @server.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url='https://AkhilAuto.onrender.com/' + f"{API_TOKEN}")
+    bot.set_webhook(url='https://alivebots.onrender.com/' + f"{API_TOKEN}")
     return "!", 200
  
 if __name__ == "__main__":
