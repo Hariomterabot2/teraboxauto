@@ -2,10 +2,11 @@ import os
 import logging
 import telebot
 import re
+import sys
 from telebot import types,util
 import time
 import random
-
+import traceback
 from flask import Flask,render_template,request,redirect
 
 from config import GENERALCHANNEL,PostText,AdText
@@ -96,9 +97,10 @@ def command_default(m):
     bot.send_message(m,"4")
     time.sleep(2)
   except Exception as e:
-    Xxx = traceback.format_exc()
+    Xxx = sys.exc_info()
+    Yyy = traceback.format_exc()
     bot.send_message(m.chat.id,Xxx)
-  
+    bot.send_message(m.chat.id,Yyy)
   
 @bot.channel_post_handler()
 def Send_Post(m):
