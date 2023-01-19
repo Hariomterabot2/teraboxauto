@@ -85,9 +85,9 @@ def command_default(m):
     UpdateTotalPost(msgy.id)
     ChnlList = GetAllChannel()
     #bot.send_message(m.chat.id,ChnlList)
-    for v in ChnlList:
+    for vii in ChnlList:
       try:
-        bot.send_photo(chat_id=int(POSTCHANNEL),photo=photo_id,caption=FData,reply_markup=keyboard,parse_mode="html")
+        bot.send_photo(chat_id=int(vii),photo=photo_id,caption=FData,reply_markup=keyboard,parse_mode="html")
       except Exception as e:
         bot.send_message(m.chat.id,f"rr {e}")
         pass
