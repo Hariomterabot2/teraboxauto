@@ -11,11 +11,11 @@ from flask import Flask,render_template,request,redirect
 from config import POSTCHANNEL,GENERALCHANNEL,PostText,AdText
 
 from DetaDatabase import AddChannel,GetAllChannel,CheckAuthUser,UpdateTotalPost,GetLastPostId,UpdateAdTextMsgId
-#logger = telebot.logger
-#telebot.logger.setLevel(logging.DEBUG) 
+logger = telebot.logger
+telebot.logger.setLevel(logging.DEBUG) 
 
 
-API_TOKEN = '5812217389:AAE5h7_mKv7ZqPJzK1VK6Hp80qWpnXgjr1M'
+API_TOKEN = '5812217389:AAE2b537yf7H5YNRRCFXeoa8u1FQLbGJgpw'
 bot = telebot.TeleBot(API_TOKEN)
 server = Flask(__name__)
  
@@ -109,6 +109,6 @@ def webhook():
     bot.set_webhook(url='https://AkhilAuto.onrender.com/' + f"{API_TOKEN}")
     return "!", 200
  
-if __name__ == "__main__":
+#if __name__ == "__main__":
     server.run(debug=True,host="0.0.0.0", port=int(os.environ.get('PORT', 1000)))
- 
+#bot.infinity_polling() 
