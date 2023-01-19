@@ -2,3 +2,4 @@ Flask
 Gunicorn
 pyTelegramBotAPI
 random2
+gspread
