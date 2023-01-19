@@ -10,7 +10,7 @@ from flask import Flask,render_template,request,redirect
 
 from config import POSTCHANNEL,GENERALCHANNEL,PostText,AdText
 
-from DetaDatabase import AddChannel,GetAllChannel,CheckAuthUser,UpdateTotalPost,GetLastPostId
+from DetaDatabase import AddChannel,GetAllChannel,CheckAuthUser,UpdateTotalPost,GetLastPostId,UpdateAdTextMsgId
 #logger = telebot.logger
 #telebot.logger.setLevel(logging.DEBUG) 
 
@@ -90,12 +90,12 @@ def Send_Post(m):
     bot.forward_message(chat_id = m.chat.id, from_chat_id = POSTCHANNEL, message_id = pstid)
     time.sleep(2)
   try:
-    msg = bot.send_message(m.chat.id,AdText)
-    UpdateAdTextMsgId(msg.id)
+    msg = bot.send_message(m.chat.id,AdText.format(GENERALCHANNEL),parse_mode="html")
+    #UpdateAdTextMsgId(msg.id)
   except:
     AddChannel(m.chat.id)
-    msg = bot.send_message(m.chat.id,AdText)
-    UpdateAdTextMsgId(msg.id)
+    msg = bot.send_message(m.chat.id,AdText.format(GENERALCHANNEL),parse_mode="html")
+    #UpdateAdTextMsgId(msg.id)
     
 
 @server.route('/' + API_TOKEN, methods=['POST'])
@@ -106,12 +106,9 @@ def getMessage():
 @server.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url='https://alivebots.onrender.com/' + f"{API_TOKEN}")
+    bot.set_webhook(url='https://AkhilAuto.onrender.com/' + f"{API_TOKEN}")
     return "!", 200
  
 if __name__ == "__main__":
-    server.run(debug=True,host="0.0.0.0", port=int(os.environ.get('PORT', 1000)))
- 
-
-bot.infinity_polling()
+    server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 1000)))
  
