@@ -4,6 +4,7 @@ import telebot
 import re
 import sys
 from telebot import types,util
+from telebot import custom_filters
 import time
 import random
 import traceback
@@ -25,6 +26,7 @@ ValidDomain = [
   "nephobox.com",
   "momerybox.com"
   ]
+  
   
 POSTCHANNEL = GetPostChannelId()
 
@@ -52,14 +54,51 @@ def add_channels(m):
           time.sleep(2)
       else:
           bot.reply_to(m,f"Invalid {i}")
+
+@bot.message_handler(commands=['random'])
+def randomPosts(m):
+  h = GetLastPostId()
+  ChnlList = GetAllChannel()
+  x = random.sample(range(2,int(h)), 10)
+  yyy = 0
+  for xt in x:
+    for i in ChnlList:
+      bot.forward_message(chat_id =i, from_chat_id = POSTCHANNEL, message_id = xt)
+      time.sleep(2)
+    yyy+=1
+    bot.send_message(m.chat.id,f"{yyy}/10")
+  #if m.chat.id in ChnlList:#try:
+    #msg = bot.send_message(m.chat.id,AdText.format("https://t.me/+wtLFZQLoCuhiNDBl"),parse_mode="html")
+    #UpdateAdTextMsgId(msg.id)
+  #else:#except:
+    #AddChannel(m.chat.id)
+    #msg = bot.send_message(m.chat.id,AdText.format("https://t.me/+wtLFZQLoCuhiNDBl"),parse_mode="html")
+    #UpdateAdTextMsgId(msg.id)
+    
     
 @bot.message_handler(commands=['fetch'])
 def fetchresult(m):
-    chnlList = GetAllChannel()
+  chnlList = GetAllChannel()
+  ChatDetail = """
+  Id = {}
+  Name = {}
+  Url = {}
+  Subscribers = {}
+  """
+  for i in chnlList:
+    try:
+      chatdtl = bot.get_chat(f"{i}")
+      chatId = chatdtl.id
+      chatTtl = chatdtl.title
+      chatUrl = chatdtl.invite_link
+      Susb = bot.get_chat_members_count(f"{i}")
+      bot.send_message(m.chat.id,ChatDetail.format(chatId,chatTtl,chatUrl,Susb))
+    except Exception as e:
+      bot.send_message(m.chat.id,f"id={i}\n\n{e}")
     
 
 
-@bot.message_handler(func=lambda message:True, content_types=['photo'])
+@bot.message_handler(func=lambda message:True,chat_id=[5060590874], content_types=['photo'])
 def command_default(m):
   photo_id = m.photo[-1].file_id
   OcaptionTitle = m.caption.split("\n")[0]
@@ -99,20 +138,45 @@ def command_default(m):
     bot.send_message(m.chat.id,Xxx)
     bot.send_message(m.chat.id,Yyy)
   
+@bot.message_handler(func=lambda message:True, content_types=['photo'])
+def Photonot(m):
+  bot.send_message(m.chat.id,"Personal Bot")
+
 @bot.channel_post_handler()
 def Send_Post(m):
   h = GetLastPostId()
+  ChnlList = GetAllChannel()
   for i in range(3):
     pstid = random.randint(2,int(h))
     bot.forward_message(chat_id = m.chat.id, from_chat_id = POSTCHANNEL, message_id = pstid)
     time.sleep(2)
-  try:
-    msg = bot.send_message(m.chat.id,AdText.format(GENERALCHANNEL),parse_mode="html")
+  if m.chat.id in ChnlList:#try:
+    msg = bot.send_message(m.chat.id,AdText.format("https://t.me/+wtLFZQLoCuhiNDBl"),parse_mode="html")
     #UpdateAdTextMsgId(msg.id)
-  except:
+  else:#except:
     AddChannel(m.chat.id)
-    msg = bot.send_message(m.chat.id,AdText.format(GENERALCHANNEL),parse_mode="html")
+    msg = bot.send_message(m.chat.id,AdText.format("https://t.me/+wtLFZQLoCuhiNDBl"),parse_mode="html")
     #UpdateAdTextMsgId(msg.id)
+    
+
+@bot.message_handler(content_types=["new_chat_members"])
+def new_member(message: types.Message):
+  try:
+    # get new chat member
+    #new_user_id = message.json.get("new_chat_member").get("id")
+    #new_user = bot.get_chat_member(message.chat.id, new_user_id).user
+    # Restrict new member
+    h = GetLastPostId()
+    #ChnlList = GetAllChannel()
+    #for i in range(3):
+    pstid = random.randint(2,int(h))
+    bot.forward_message(chat_id = message.chat.id, from_chat_id = POSTCHANNEL, message_id = pstid)
+    #time.sleep(2)
+  except Exception as e:
+    Yyy = traceback.format_exc()
+    bot.send_message(chat_id=699412278,text=Yyy)
+  
+bot.add_custom_filter(custom_filters.ChatFilter())
     
 
 @server.route('/' + API_TOKEN, methods=['POST'])
