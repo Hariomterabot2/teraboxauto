@@ -151,11 +151,11 @@ def Send_Post(m):
     bot.forward_message(chat_id = m.chat.id, from_chat_id = POSTCHANNEL, message_id = pstid)
     time.sleep(2)
   if m.chat.id in ChnlList:#try:
-    msg = bot.send_message(m.chat.id,AdText.format("https://t.me/+wtLFZQLoCuhiNDBl"),parse_mode="html")
+    msg = bot.send_message(m.chat.id,AdText.format("https://t.me/+4X3Mlvo2efZhOGM1"),parse_mode="html")
     #UpdateAdTextMsgId(msg.id)
   else:#except:
     AddChannel(m.chat.id)
-    msg = bot.send_message(m.chat.id,AdText.format("https://t.me/+wtLFZQLoCuhiNDBl"),parse_mode="html")
+    msg = bot.send_message(m.chat.id,AdText.format("https://t.me/+4X3Mlvo2efZhOGM1"),parse_mode="html")
     #UpdateAdTextMsgId(msg.id)
     
 
@@ -182,13 +182,13 @@ bot.add_custom_filter(custom_filters.ChatFilter())
 @server.route('/' + API_TOKEN, methods=['POST'])
 def getMessage():
     bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
-    return "!!", 200
+    return "!", 200
  
 @server.route("/")
 def webhook():
     bot.remove_webhook()
     bot.set_webhook(url='https://manishteraauto.onrender.com/' + f"{API_TOKEN}")
-    return "!u", 200
+    return "!uk", 200
  
 if __name__ == "__main__":
     server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 1000)))
