@@ -24,7 +24,8 @@ server = Flask(__name__)
 ValidDomain = [
   "terabox.com",
   "nephobox.com",
-  "momerybox.com"
+  "momerybox.com",
+  "teraboxapp.com"
   ]
   
   
