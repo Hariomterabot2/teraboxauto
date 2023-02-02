@@ -98,7 +98,7 @@ def fetchresult(m):
     
 
 
-@bot.message_handler(func=lambda message:True,chat_id=[5060590874], content_types=['photo'])
+@bot.message_handler(func=lambda message:True,chat_id=[1023650988], content_types=['photo'])
 def command_default(m):
   photo_id = m.photo[-1].file_id
   OcaptionTitle = m.caption.split("\n")[0]
