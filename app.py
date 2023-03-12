@@ -17,7 +17,7 @@ logger = telebot.logger
 telebot.logger.setLevel(logging.DEBUG) 
 
 
-API_TOKEN = '1914052696:AAEH1HaCxNhjxtCee_ySBbpLLWxiCY6rV3g'
+API_TOKEN = '1921522398:AAFdwDnD-Odv5XdP7sxTosn3nRspkEnetZI'
 bot = telebot.TeleBot(API_TOKEN)
 server = Flask(__name__)
 
