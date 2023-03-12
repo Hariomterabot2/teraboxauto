@@ -188,7 +188,7 @@ def getMessage():
 @server.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url='https://tera1stsolo.onrender.com/' + f"{API_TOKEN}")
+    bot.set_webhook(url='https://terax2nd.onrender.com/' + f"{API_TOKEN}")
     return "!uk", 200
  
 if __name__ == "__main__":
