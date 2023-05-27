@@ -152,11 +152,11 @@ def Send_Post(m):
     bot.forward_message(chat_id = m.chat.id, from_chat_id = POSTCHANNEL, message_id = pstid)
     time.sleep(2)
   if m.chat.id in ChnlList:#try:
-    msg = bot.send_message(m.chat.id,AdText.format("https://t.me/+RcRxo6Yt8kQ4MjA1"),parse_mode="html")
+    msg = bot.send_message(m.chat.id,AdText.format("https://t.me/+qTEbmFdW9U5hZTFl"),parse_mode="html")
     #UpdateAdTextMsgId(msg.id)
   else:#except:
     AddChannel(m.chat.id)
-    msg = bot.send_message(m.chat.id,AdText.format("https://t.me/+RcRxo6Yt8kQ4MjA1"),parse_mode="html")
+    msg = bot.send_message(m.chat.id,AdText.format("https://t.me/+qTEbmFdW9U5hZTFl"),parse_mode="html")
     #UpdateAdTextMsgId(msg.id)
     
 
