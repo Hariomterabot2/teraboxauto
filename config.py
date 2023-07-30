@@ -1,5 +1,5 @@
 POSTCHANNEL = -1005844765948
-GENERALCHANNEL = "https://t.me/+e76yf98Drq00OWE9"
+GENERALCHANNEL = "https://t.me/+qTEbmFdW9U5hZTFl"
 PostText ="""<b>{}🥰
   
 {}
