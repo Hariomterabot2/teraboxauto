@@ -25,7 +25,9 @@ ValidDomain = [
   "terabox.com",
   "nephobox.com",
   "momerybox.com",
-  "teraboxapp.com"
+  "teraboxapp.com",
+  "1024nephobox.com",
+  "1024terabox.com"
   ]
   
   
