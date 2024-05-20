@@ -190,7 +190,7 @@ def getMessage():
 @server.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url='https://hariomauto-735eef8dc630.herokuapp.com/' + f"{API_TOKEN}")
+    bot.set_webhook(url='https://teraboxauto-9rzp.onrender.com/' + f"{API_TOKEN}")
     return "!uk", 200
  
 if __name__ == "__main__":
