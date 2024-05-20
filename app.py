@@ -124,7 +124,7 @@ def command_default(m):
   FData = PostText.format(OcaptionTitle,TeraUrl,TeraUrl,GENERALCHANNEL)
   msgy = bot.send_photo(chat_id=int(POSTCHANNEL),photo=photo_id,caption=FData,reply_markup=keyboard,parse_mode="html")
   try:
-    UpdateTotalPost(msgy.id)
+    # UpdateTotalPost(msgy.id)
     ChnlList = GetAllChannel()
     #bot.send_message(m.chat.id,ChnlList)
     for vii in ChnlList:
